@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect Binance Account</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .connect-container {
+            max-width: 500px;
+            margin: 5rem auto;
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 0.75rem;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+        }
+        .spinner-border {
+            width: 1rem;
+            height: 1rem;
+            border-width: .2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="connect-container">
+            <h2 class="text-center mb-4">Connect to Binance</h2>
+            <p class="text-center text-muted mb-4">Enter your API credentials to begin.</p>
+
+            {% if error %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+            {% endif %}
+
+           <form id="connect-form" method="POST" action="{{ url_for('connect_binance') }}">
+                <div class="mb-3">
+                    <label for="apiKey" class="form-label">API Key</label>
+                    <input type="password" class="form-control" id="apiKey" name="api_key" required>
+                </div>
+                <div class="mb-3">
+                    <label for="apiSecret" class="form-label">API Secret</label>
+                    <input type="password" class="form-control" id="apiSecret" name="api_secret" required>
+                </div>
+                <div class="form-check form-switch mb-4">
+                    <input class="form-check-input" type="checkbox" name="testnet" id="testnetCheck" checked>
+                    <label class="form-check-label" for="testnetCheck">Use Testnet Account</label>
+                </div>
+                <div class="d-grid">
+                    <button id="connect-btn" type="submit" class="btn btn-primary btn-lg">
+                        <span id="btn-text">Connect Securely</span>
+                        <span id="loading-spinner" class="spinner-border ms-2 d-none" role="status" aria-hidden=>
+                    </button>
+                </div>
+            </form>
+
+            <div class="mt-4 text-center">
+                <a href="{{ url_for('platform_selection') }}" class="btn btn-link text-secondary">← Back to Plat>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('connect-form').addEventListener('submit', function() {
+            document.getElementById('btn-text').textContent = 'Connecting...';
+            document.getElementById('loading-spinner').classList.remove('d-none');
+            document.getElementById('connect-btn').disabled = true;
+        });
+    </script>
+</body>
+</html>
