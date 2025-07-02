@@ -1,0 +1,32 @@
+├── app.py
+├── bot_operations.log
+├── bots
+│   ├── __pycache__
+│   ├── alpaca_bot.py
+│   ├── binance_bot.py
+│   └── oanda_bot.py
+├── gbc_model.model
+├── install.log
+├── lstm_model.h5
+├── regime_model.model
+├── requirements.txt
+├── setup_history.json
+├── static
+├── templates
+│   ├── analytics.html
+│   ├── binance_balance.html
+│   ├── binance_dashboard.html
+│   ├── coming_soon.html
+│   ├── connect_alpaca.html
+│   ├── connect_binance.html
+│   ├── connect_mt4.html
+│   ├── connect_mt5.html
+│   ├── connect_oanda.html
+│   ├── dashboard.html
+│   ├── error.html
+│   ├── license_expired.html
+│   ├── platform_selection.html
+│   ├── signup.html
+│   └── welcome.html
+├── trade_analytics.csv
+├── trading_analytics.log
